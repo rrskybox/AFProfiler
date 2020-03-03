@@ -48,7 +48,7 @@ Installation:
 
 AFProfiler executes as a “Click-Once” application.  This means that it is installed and executed from a system cache and does not create folder(s) on your system.  It also means that the application will run immediately after installation – shouldn’t be a problem.  
 
-Run the "Pubish\Setup.exe" application.  Upon completion, an application icon will have been added to the start menu under the category "TSXToolkit" with the application name  “Auto Focus Profiler".  This application can be pinned to the Start if desired.
+Download the "publish" directory.  Open the "Setup.exe" application.  Upon completion, an application icon will have been added to the start menu under the category "TSXToolkit" with the application name  “Auto Focus Profiler".  This application can be pinned to the Start if desired.
 
 Support:  
 
