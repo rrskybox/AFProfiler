@@ -50,17 +50,17 @@ Public Class TTutility
         '   Camera Filter
 
         'target name
-        Dim tsx_oi = CreateObject("TheSkyX.Sky6ObjectInformation")
-        tsx_oi.Property(TheSkyXLib.Sk6ObjectInformationProperty.sk6ObjInfoProp_NAME1)
+        Dim tsx_oi = CreateObject("TheSky64.Sky6ObjectInformation")
+        tsx_oi.Property(TheSky64Lib.Sk6ObjectInformationProperty.sk6ObjInfoProp_NAME1)
         Target_Name = tsx_oi.ObjInfoPropOut
         'camera configuration
-        Dim tsx_cc = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_cc = CreateObject("TheSky64.ccdsoftCamera")
         Cam_Delay = tsx_cc.Delay
         Cam_Reduction = tsx_cc.ImageReduction
         Cam_Filter = tsx_cc.FilterIndexZeroBased
         Cam_Exposure = tsx_cc.ExposureTime
         'guider configuration
-        Dim tsx_ag = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_ag = CreateObject("TheSky64.ccdsoftCamera")
         tsx_ag.Autoguider = 1
         AG_Delay = tsx_ag.Delay
         AG_Reduction = tsx_ag.ImageReduction
@@ -78,7 +78,7 @@ Public Class TTutility
 
         'Clears the observing list, restores the current target and camera configuration information in TTutility public variables,
         'Open camera object
-        Dim tsx_cc = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_cc = CreateObject("TheSky64.ccdsoftCamera")
 
         'target star
         TSX_Find(Target_Name)
@@ -88,7 +88,7 @@ Public Class TTutility
         tsx_cc.ExposureTime = Cam_Exposure
         tsx_cc.Delay = Cam_Delay
         'autoguider settings
-        Dim tsx_ag = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_ag = CreateObject("TheSky64.ccdsoftCamera")
         tsx_ag.Autoguider = 1
         tsx_ag.Delay = AG_Delay
         tsx_ag.ImageReduction = AG_Reduction
@@ -108,13 +108,13 @@ Public Class TTutility
 
         Dim CLSstatus As Integer
         'Open camera object
-        Dim tsx_cc = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_cc = CreateObject("TheSky64.ccdsoftCamera")
 
         'If CLS is required, then create cls object, set the exposure, filter to luminance and reduction, set the camera delay to 15
         ' should be picked up in the mount driver
 
-        Dim tsx_cls = CreateObject("TheSkyX.ClosedLoopSlew")
-        tsx_cc.ImageReduction = TheSkyXLib.ccdsoftImageReduction.cdAutoDark
+        Dim tsx_cls = CreateObject("TheSky64.ClosedLoopSlew")
+        tsx_cc.ImageReduction = TheSky64Lib.ccdsoftImageReduction.cdAutoDark
         tsx_cc.FilterIndexZeroBased = clearfilter
         tsx_cc.ExposureTime = ExposureTime
         tsx_cc.Delay = SettlingTime 'Set some settling time for the mount
@@ -136,10 +136,10 @@ Public Class TTutility
 
         Dim CLSstatus As Integer
         'Open camera object
-        Dim tsx_cc = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_cc = CreateObject("TheSky64.ccdsoftCamera")
         Dim exposure As Double = InitialExposureTime
 
-        tsx_cc.ImageReduction = TheSkyXLib.ccdsoftImageReduction.cdAutoDark
+        tsx_cc.ImageReduction = TheSky64Lib.ccdsoftImageReduction.cdAutoDark
         tsx_cc.FilterIndexZeroBased = filterIndex
         tsx_cc.ExposureTime = exposure
         'Get the best exposure time based on the target ADU
@@ -179,7 +179,7 @@ Public Class TTutility
         'Upon clearing, the routine will "find" the target name, if any 
 
         If targetname <> Nothing Then
-            Dim tsx_sc = CreateObject("TheSkyX.Sky6StarChart")
+            Dim tsx_sc = CreateObject("TheSky64.Sky6StarChart")
             Try
                 tsx_sc.Find(targetname)
             Catch ex As Exception
@@ -191,7 +191,7 @@ Public Class TTutility
     End Sub
 
     Public Shared Function checkTSX() As Boolean
-        Dim pname As String = "TheSkyX"
+        Dim pname As String = "TheSky64"
         Dim pList() As System.Diagnostics.Process = System.Diagnostics.Process.GetProcesses
         For Each proc As System.Diagnostics.Process In pList
             If String.Compare(proc.ProcessName, pname) = 0 Then
@@ -203,7 +203,7 @@ Public Class TTutility
     End Function
 
     Public Shared Sub TSXWaitLoop(tsx_cc As Object)
-        Do While tsx_cc.state = TheSkyXLib.ccdsoftCameraState.cdStateTakePicture
+        Do While tsx_cc.state = TheSky64Lib.ccdsoftCameraState.cdStateTakePicture
             System.Threading.Thread.Sleep(1000)
         Loop
         Return

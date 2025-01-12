@@ -112,7 +112,7 @@
         calculatedCFZ = CalculateCFZ()
         CFZStepsText.Text = Str(TTutility.DoubleClip(calculatedCFZ, 0))
 
-        Dim tsx_cc = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_cc = CreateObject("TheSky64.ccdsoftCamera")
         If tsx_cc.focIsConnected <> 1 Then
             'No focuser; no bueno
             TemperatureReadout.Text = "None"
@@ -249,12 +249,12 @@
         Const af3AutoStar = True
 
         'Create camera object
-        Dim tsx_cc = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_cc = CreateObject("TheSky64.ccdsoftCamera")
         Dim tstat As Integer = 0
         'Configure @Focus2
         tsx_cc.Asynchronous = False
         tsx_cc.AutoSaveFocusImages = False
-        tsx_cc.ImageReduction = TheSkyXLib.ccdsoftImageReduction.cdAutoDark
+        tsx_cc.ImageReduction = TheSky64Lib.ccdsoftImageReduction.cdAutoDark
         tsx_cc.FilterIndexZeroBased = filternumber
         tsx_cc.Delay = 0 'Don't delay for every focus image, just the first
         'Delay for one seconds for the filter to settle
@@ -331,7 +331,7 @@
         Dim focusfile = FocusFileDialog.FileNames(0)
         Dim movestat As Integer
 
-        Dim tsx_cc = CreateObject("TheSkyX.ccdsoftCamera")
+        Dim tsx_cc = CreateObject("TheSky64.ccdsoftCamera")
         If tsx_cc.focIsConnected <> 1 Then
             'No focuser; no bueno
             Return

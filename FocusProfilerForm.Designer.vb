@@ -118,7 +118,7 @@ Partial Class FocusProfilerForm
         'FocusFileDialog
         '
         Me.FocusFileDialog.FileName = "*.foc"
-        Me.FocusFileDialog.InitialDirectory = "C:\Users\*\Documents\Software Bisque\TheSkyX Professional Edition\Focuser Data"
+        Me.FocusFileDialog.InitialDirectory = "C:\Users\*\Documents\Software Bisque\TheSky64 Professional Edition\Focuser Data"
         '
         'RepetitionsNumber
         '
